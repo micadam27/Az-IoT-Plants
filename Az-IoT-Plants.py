@@ -7,7 +7,7 @@ import psutil
 import socket
 
 # START: Azure IoT Hub settings
-KEY = "ju2h617zKwtjOty6pOWgbymvREldmI61Pa46zx6SOow=";
+KEY = "whDMFGt3ltHVf6w6iqd/Pdclgi67BIDInViITMV2s8I=";
 HUB = "Mic-IOT-Hub";
 DEVICE_NAME = str(hostname);
 # END: Azure IoT Hub settings
