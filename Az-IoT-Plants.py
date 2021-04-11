@@ -6,6 +6,8 @@ import DeviceClient
 import psutil
 import socket
 
+hostname = str(socket.gethostname())
+
 # START: Azure IoT Hub settings
 KEY = "whDMFGt3ltHVf6w6iqd/Pdclgi67BIDInViITMV2s8I=";
 HUB = "Mic-IOT-Hub";
@@ -23,8 +25,6 @@ data = {}
 cpuusage = psutil.cpu_percent(4)
 now = datetime.now()
 timestamp = now.strftime("%H:%M")
-hostname = str(socket.gethostname())
-
 
 #TestData - Imput value in json
 data["Name"] = str(hostname)
