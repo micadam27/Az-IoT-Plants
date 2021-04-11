@@ -10,6 +10,7 @@ import busio
 from adafruit_seesaw.seesaw import Seesaw
 
 hostname = str(socket.gethostname())
+MINUTES_BETWEEN_READS = 60
 
 i2c_bus = busio.I2C(SCL, SDA)
 
@@ -54,3 +55,4 @@ while True:
 
   #Test json Output
   device.send(encoded_data)
+  time.sleep(60*MINUTES_BETWEEN_READS)
