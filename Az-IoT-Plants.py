@@ -25,11 +25,13 @@ data = {}
 cpuusage = psutil.cpu_percent(4)
 now = datetime.now()
 timestamp = now.strftime("%H:%M")
+memusage = psutil.virtual_memory().percent
 
 #TestData - Imput value in json
 data["Name"] = str(hostname)
 data["TimeStamp"] = str(timestamp)
 data["CPU"] = float(cpuusage)
+data["Memory"] = float(memusage)
 
 #Encode data to json
 encoded_data = json.dumps(data,indent=1).encode('utf-8')
