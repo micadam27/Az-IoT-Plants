@@ -22,6 +22,8 @@ HUB = "Mic-IOT-Hub";
 DEVICE_NAME = str(hostname);
 # END: Azure IoT Hub settings
 
+time.sleep(60*5)
+
 while True:
   #Connect device to Azure
   device = DeviceClient.DeviceClient(HUB,DEVICE_NAME,KEY)
