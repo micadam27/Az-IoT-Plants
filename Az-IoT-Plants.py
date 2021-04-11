@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import requests
 import DeviceClient
-import psutil
+import psutils
 import socket
 from board import SCL, SDA
 import busio
