@@ -21,37 +21,36 @@ HUB = "Mic-IOT-Hub";
 DEVICE_NAME = str(hostname);
 # END: Azure IoT Hub settings
 
-#Connect device to Azure
-device = DeviceClient.DeviceClient(HUB,DEVICE_NAME,KEY)
-device.create_sas(600)
+while True:
+  #Connect device to Azure
+  device = DeviceClient.DeviceClient(HUB,DEVICE_NAME,KEY)
+  device.create_sas(600)
 
-#Sample
-data = {}
+  #Sample
+  data = {}
 
-# read moisture level through capacitive touch pad
-touch = ss.moisture_read()
+  # read moisture level through capacitive touch pad
+  touch = ss.moisture_read()
 
-# read temperature from the temperature sensor
-temp = ss.get_temp()
+  # read temperature from the temperature sensor
+  temp = ss.get_temp()
 
-#Get Computer Value
-cpuusage = psutil.cpu_percent(4)
-now = datetime.now()
-timestamp = now.strftime("%H:%M")
-memusage = psutil.virtual_memory().percent
+  #Get Computer Value
+  cpuusage = psutil.cpu_percent(4)
+  now = datetime.now()
+  timestamp = now.strftime("%H:%M")
+  memusage = psutil.virtual_memory().percent
 
-#Imput value in json
-data["Name"] = str(hostname)
-data["TimeStamp"] = str(timestamp)
-data["CPU"] = float(cpuusage)
-data["Memory"] = float(memusage)
-data["Soil Temp"] = str(temp)
-data["moisture"] = str(touch)
+  #Imput value in json
+  data["Name"] = str(hostname)
+  data["TimeStamp"] = str(timestamp)
+  data["CPU"] = float(cpuusage)
+  data["Memory"] = float(memusage)
+  data["Soil Temp"] = str(temp)
+  data["moisture"] = str(touch)
 
-#Encode data to json
-encoded_data = json.dumps(data,indent=1).encode('utf-8')
+  #Encode data to json
+  encoded_data = json.dumps(data,indent=1).encode('utf-8')
 
-#Test json Output
-print(device.send(encoded_data))
-
-print("temp: " + str(temp) + "  moisture: " + str(touch))
+  #Test json Output
+  device.send(encoded_data)
